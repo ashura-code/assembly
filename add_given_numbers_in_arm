@@ -1,0 +1,51 @@
+.global main
+
+main:
+   LDR R0 , =list
+   LDR R5,[R0]
+   MOV R2 , #4  //LEN
+   MOV R3 , #0  //CURR POS
+   //R4 FOR STORAGE
+   
+ loop: 
+    CMP R2,R3
+	BEQ exit
+	ADD R4,R4,R5
+	LDR R5,[R0,#4]!
+	MOV R6,#1
+	ADD R3,R3,R6
+	BAL loop
+	
+exit:
+  MOV R7,#1
+  SWI 0 
+  BAL exit
+   
+.data
+  list:
+     .word 1,2,3,4.global main
+
+main:
+   LDR R0 , =list
+   LDR R5,[R0]
+   MOV R2 , #4  //LEN
+   MOV R3 , #0  //CURR POS
+   //R4 FOR STORAGE
+   
+ loop: 
+    CMP R2,R3
+	BEQ exit
+	ADD R4,R4,R5
+	LDR R5,[R0,#4]!
+	MOV R6,#1
+	ADD R3,R3,R6
+	BAL loop
+	
+exit:
+  MOV R7,#1
+  SWI 0 
+  BAL exit
+   
+.data
+  list:
+     .word 1,2,3,4
